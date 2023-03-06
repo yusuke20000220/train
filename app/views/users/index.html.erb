@@ -1,0 +1,40 @@
+<main>
+  <div class="container px-5 py-4 px-sm-0">
+    <div class="row">
+      <%= render 'books/new', book: @book, user: current_user %>
+      
+      <div class="col-md-8 offset-md-1">
+        <h2>Books</h2>
+        <table class="table table-hover table-inverse">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Name</th>
+              <th>Introduction</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <% @users.each do |user| %>
+          <tbody>
+            <tr>
+              <td>
+                <%= link_to user_path(user.id) do %>
+                  <%= image_tag user.get_profile_image(80,80) %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to user_path(user.id) do %>
+                  <p><%= user.name %></p>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to "Show", user_path(user.id) %>
+              </td>
+            </tr>
+          </tbody>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
